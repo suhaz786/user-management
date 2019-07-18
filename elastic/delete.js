@@ -1,4 +1,4 @@
-var client = require('./connection');
+var client = require('../elastic_config/connection');
 
 //delete an index
 client.indices.delete({index: 'users'},function(err,resp,status) {  

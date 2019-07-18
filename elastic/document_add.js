@@ -1,4 +1,4 @@
-var client = require('./connection');
+var client = require('../elastic_config/connection');
 
 client.index({
     index: 'users',
