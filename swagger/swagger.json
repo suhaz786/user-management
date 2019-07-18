@@ -39,6 +39,35 @@
         }
       }
     },
+    "/{id}": {
+      "x-swagger-router-controller": "user",
+      "get": {
+        "operationId": "findById",
+        "description": "Find User By Id",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SearchResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
     "/create": {
       "x-swagger-router-controller": "user",
       "post": {
