@@ -6,7 +6,7 @@
     "description": "User Management Service Swagger Documentation"
   },
   "host": "localhost:1234",
-  "basePath": "/",
+  "basePath": "/users",
   "schemes": [
     "http",
     "https"
@@ -18,8 +18,8 @@
     "application/json"
   ],
   "paths": {
-    "/users": {
-      "x-swagger-router-controller": "users",
+    "/create": {
+      "x-swagger-router-controller": "user",
       "post": {
         "operationId": "create",
         "description": "create user",

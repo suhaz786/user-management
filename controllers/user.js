@@ -13,7 +13,7 @@ exports.user_create = function (req, res) {
         }
     );
 
-    product.save(function (err) {
+    user.save(function (err) {
         if (err) {
             return next(err);
         }
