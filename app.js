@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var swaggerUi = require('swagger-ui-express');
 var swaggerDocument = require('./swagger/swagger.json')
 var user = require('./routes/user'); // Imports routes for the users
+
 var app = express();
 
 
@@ -20,6 +21,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/users', user);
+
+// Swagger Documentation Configured
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 var port = 1234;
