@@ -18,6 +18,27 @@
     "application/json"
   ],
   "paths": {
+    "/": {
+      "x-swagger-router-controller": "user",
+      "get": {
+        "operationId": "findAll",
+        "description": "find all users",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SearchResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
     "/create": {
       "x-swagger-router-controller": "user",
       "post": {

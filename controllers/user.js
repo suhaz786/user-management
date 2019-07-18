@@ -41,3 +41,13 @@ exports.user_delete = function (req, res) {
         res.send('Deleted successfully!');
     })
 };
+
+exports.user_findAll = function (req, res) {
+    User.find().then(result => {
+        res.send(result);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Error while searching users."
+        });
+    });
+};
