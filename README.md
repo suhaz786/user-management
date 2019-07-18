@@ -1,4 +1,5 @@
-#### User Management
+# User Management Service
+This service acts as the user management service for the ecosystem of micro-services that we developed.
 
 #### MongoDB Setup
 Assuming you have created the data/db directory under bin after install.
