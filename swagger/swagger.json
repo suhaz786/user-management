@@ -161,6 +161,27 @@
         }
       }
     },
+    "/elastic": {
+      "x-swagger-router-controller": "user",
+      "get": {
+        "operationId": "es_searchAll",
+        "description": "find all users in elastic",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/SearchResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
     "/swagger": {
       "x-swagger-pipe": "swagger_raw"
     }

@@ -5,16 +5,18 @@ var router = express.Router();
 var user_controller = require('../controllers/user');
 
 // a simple test url to check that all of our files are communicating correctly.
-router.get('/test', user_controller.test);
+router.get('/users/about', user_controller.about);
 
-router.post('/create', user_controller.user_create);
+router.post('/users/create', user_controller.user_create);
 
-router.get('/:id', user_controller.user_details);
+router.get('/users/:id', user_controller.user_details);
 
-router.put('/:id', user_controller.user_update);
+router.put('/users/:id', user_controller.user_update);
 
-router.delete('/:id', user_controller.user_delete);
+router.delete('/users/:id', user_controller.user_delete);
 
-router.get('/', user_controller.user_findAll);
+router.get('/users/', user_controller.user_findAll);
+
+router.get('/users/elastic', user_controller.es_searchAll)
 
 module.exports = router;

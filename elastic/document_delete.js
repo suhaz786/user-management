@@ -1,6 +1,6 @@
-var client = require('../elastic_config/connection');
+var cliesClientent = require('../elastic_config/connection');
 
-client.delete({
+esClient.delete({
     index: 'users',
     id: '1',
     type: 'employee'

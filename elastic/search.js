@@ -1,6 +1,6 @@
-var client = require('../elastic_config/connection');
+var esClient = require('../elastic_config/connection');
 
-client.search({
+esClient.search({
     index: 'users',
     type: 'employee',
     body: {

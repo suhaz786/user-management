@@ -1,10 +1,10 @@
-var client = require('../elastic_config/connection');
+var esClient = require('../elastic_config/connection');
 
-client.cluster.health({}, function(err, resp, status) {
+esClient.cluster.health({}, function(err, resp, status) {
     console.log("-- Client Health --", resp);
 })
 
-client.count({
+esClient.count({
     index: 'users', 
     type: 'employee'
 }, function (err, resp, status) {

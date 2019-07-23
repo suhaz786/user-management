@@ -1,8 +1,8 @@
-var client = require('./connection');
+var esClient = require('../elastic_config/connection');
 
 //create a index. (index is a place to store related documents.)
-client.indices.create({
-    index: 'users'
+esClient.indices.create({
+    index: 'library'
 }, function(err, resp, status) {
     if (err){
         console.log(err);
