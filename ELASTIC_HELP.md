@@ -88,14 +88,16 @@ PUT sales
 PUT sales/order/123
 {
   "orderID" : "123",
-  "orderAmount" : "500"
+  "orderAmount" : "500",
+  "tags":["IT Sales", "2019"]
 }
 ```
 ```text
 PUT sales/order/124
 {
   "orderID" : "124",
-  "orderAmount" : "1000"
+  "orderAmount" : "1000",
+  "tags":["Marketing Sales", "2019"]
 }
 ```
 
@@ -103,11 +105,11 @@ PUT sales/order/124
 ```text
 POST _bulk 
 { "index":{ "_index": "sales", "_type": "order" } }
-{ "orderID":"125","orderAmount":250 }
+{ "orderID":"125","orderAmount":250, "tags":["PR", "2019"] }
 { "index":{ "_index": "sales", "_type": "order" } }
-{ "orderID":"126","orderAmount":350 }
+{ "orderID":"126","orderAmount":350, "tags":["Finance", "2019"] }
 { "index":{ "_index": "sales", "_type": "order" } }
-{ "orderID":"127","orderAmount":150 }
+{ "orderID":"127","orderAmount":150, "tags":["Marketing", "2019"] }
 ```
 
 - Read data
@@ -130,12 +132,12 @@ GET sales/_search
 
 - Search Index with one condition
 ```text
-GET sales/_search
+GET sales/order/_search
 {
-"query": {
-  "match": {
-    "orderID": "125"
-           }
+  "query": {
+    "match": {
+      "orderID":"124"
+    }
   }
 }
 ```
@@ -144,34 +146,36 @@ GET sales/_search
 ```text
 GET _search
 {
-"query": {
-  "match": {
-    "orderID": "125"
-           }
-  }
-}
-```
-
-- Search Index with AND condition using MUST keyword
-```text
-GET _search 
-{
   "query": {
-    "bool": {
-      "must": [
-        {"match": {
-          "orderID": "125"
-        }},
-        {"match": {
-          "orderAmount": "250"
-        }}
-      ]
+    "match": {
+      "orderID":"127"
     }
   }
 }
 ```
 
-- Search Index with AND condition using SHOULD keyword
+- Search Index with AND condition using MUST keyword
+> Select * from order where orderID = 127 and orderAmount = 150;
+```text
+GET sales/order/_search 
+{ 
+  "query": {
+    "bool": {
+      "must": [
+        {"match": {
+          "orderID": "127"
+        }},
+        {"match": {
+          "orderAmount": "150"
+        }}
+      ]
+    }   
+  }
+}
+```
+
+- Search Index with OR condition using SHOULD keyword
+> select * from order where orderID = 125 or orderAmount = 250;
 ```text
 GET sales/_search 
 {
