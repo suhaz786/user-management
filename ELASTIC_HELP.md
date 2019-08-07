@@ -191,20 +191,87 @@ GET sales/_search
 ```
 
 - Search Index with NOT condition
+> select * from order where orderID <> 127 && orderAmount <> 250;
 ```text
-GET _search 
-{
+GET sales/order/_search 
+{ 
   "query": {
     "bool": {
       "must_not": [
         {"match": {
-          "_id": "123"
+          "orderID": "127"
         }},
         {"match": {
-          "orderAmount": "1231"
+          "orderAmount": "250"
         }}
       ]
+    }   
+  }
+}
+```
+
+#### NESTED TABLES
+```text
+PUT users/user/1
+{
+  "fullName" : "Suhas Saheer",
+  "birthDate": "24-07-1987",
+  "nationality":"Great Britain",
+  "profession": "Manager",
+  "address":[
+    {
+      "apartment No": "123",
+      "street": "Hessa Street",
+      "city": "Dubai Sports City",
+      "emirate": "Dubai"
+    },
+    {
+      "apartment No": "906",
+      "street": "Al Khamila Street",
+      "city": "JLT",
+      "emirate": "Dubai"
     }
+  ]
+}
+```
+
+```text
+PUT users/user/2
+{
+  "fullName" : "Zayn Suhas",
+  "birthDate": "28-03-2018",
+  "nationality":"Great Britain",
+  "profession": "Singer",
+  "address":[
+    {
+      "apartment No": "123",
+      "street": "Hessa Street",
+      "city": "Dubai Sports City",
+      "emirate": "Dubai"
+    },
+    {
+      "apartment No": "906",
+      "street": "Buriram",
+      "city": "Lamplaymat",
+      "emirate": "Al Ain"
+    }
+  ]
+}
+```
+
+- Search All
+```text
+GET users/_search
+```
+
+- Search Users having same apartment no
+```text
+GET users/_search
+{
+"query": {
+  "match": {
+    "address.apartment No": "123"
+           }
   }
 }
 ```
