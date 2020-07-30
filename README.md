@@ -1,4 +1,5 @@
 # User Management Service
+
 ![JavaScript](https://img.shields.io/badge/-JavaScript-black?style=flat-square&logo=javascript)
 ![Nodejs](https://img.shields.io/badge/-Nodejs-43853d?style=flat-square&logo=Node.js&logoColor=white)
 ![React](https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white)
@@ -55,3 +56,5 @@ node app.js
 ```sh
 http://localhost:1234/api-docs
 ```
+---
+[![Visits Badge](https://badges.pufler.dev/visits/suhaz786/user-management)](https://badges.pufler.dev)
